@@ -1,0 +1,32 @@
+{
+  "manifest_version": 3,
+  "name": "Super PDF Translator",
+  "version": "2.0",
+  "background": {
+    "service_worker": "background.js"
+  },
+  "side_panel": {
+    "default_path": "sidepanel.html"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["pdfjs/web/viewer.html", "pdfjs/build/*", "pdfjs/web/*"],
+      "matches": ["<all_urls>", "file:///*"]
+    }
+  ],
+  "permissions": [
+    "sidePanel",
+    "activeTab",
+    "scripting",
+    "storage",
+    "tabs",
+    "webNavigation"
+  ],
+  "host_permissions": [
+    "<all_urls>",
+    "file:///*",
+    "https://translate.argosopentech.com/*",
+    "https://libretranslate.de/*",
+    "https://libretranslate.pussthecat.org/*"
+  ]
+}

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>AI 스크롤 번역기</title>
+  <style>
+    :root {
+      --primary-color: #4A90E2; /* 메인 파란색 */
+      --bg-color: #F4F7F9;      /* 배경 회색 */
+      --text-main: #333333;     /* 기본 글자색 */
+      --text-muted: #888888;    /* 연한 글자색 */
+      --card-bg: #FFFFFF;       /* 카드 배경색 */
+    }
+
+    body {
+      margin: 0;
+      padding: 20px;
+      font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+    }
+
+    .header { text-align: center; margin-bottom: 24px; }
+    .header h2 {
+      margin: 0; font-size: 18px; color: var(--primary-color);
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+    }
+
+    .card {
+      background-color: var(--card-bg);
+      border-radius: 16px;
+      padding: 24px 20px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06); 
+      min-height: 150px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .placeholder {
+      margin: auto; text-align: center; color: var(--text-muted);
+      font-size: 14px; line-height: 1.6;
+    }
+    .placeholder .icon { font-size: 36px; margin-bottom: 12px; display: block; }
+
+    .loading {
+      display: none; text-align: center; color: var(--primary-color);
+      font-size: 14px; font-weight: bold; margin: auto;
+    }
+    .spinner {
+      border: 3px solid rgba(74, 144, 226, 0.2);
+      border-top: 3px solid var(--primary-color);
+      border-radius: 50%;
+      width: 28px; height: 28px;
+      animation: spin 1s linear infinite;
+      margin: 0 auto 12px auto;
+    }
+    @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+    .result-container { display: none; }
+    
+    .original-text {
+      font-size: 13px; color: var(--text-muted);
+      margin-bottom: 16px; padding-left: 12px;
+      border-left: 3px solid #E0E0E0; font-style: italic;
+      display: -webkit-box; -webkit-line-clamp: 3; 
+      -webkit-box-orient: vertical; overflow: hidden;
+    }
+    
+    .translated-text {
+      font-size: 16px; line-height: 1.7;
+      color: var(--text-main); font-weight: 500;
+      word-break: keep-all; 
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h2>✨ AI 스크롤 번역기</h2>
+  </div>
+
+  <div class="card">
+    <div id="placeholder" class="placeholder">
+      <span class="icon">🖱️</span>
+      웹페이지나 PDF에서<br>텍스트를 드래그해보세요.
+    </div>
+
+    <div id="loading" class="loading">
+      <div class="spinner"></div>
+      번역 중입니다...
+    </div>
+
+    <div id="resultContainer" class="result-container">
+      <div id="originalText" class="original-text"></div>
+      <div id="translatedText" class="translated-text"></div>
+    </div>
+  </div>
+
+  <script src="sidepanel.js"></script>
+</body>
+</html>

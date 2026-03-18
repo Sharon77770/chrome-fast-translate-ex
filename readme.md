@@ -36,7 +36,6 @@
 | :--- | :--- | :--- |
 | **사이드 패널 열기** | `Ctrl + Shift + Y` | `Cmd + Shift + Y` |
 | **탭 전환 (순환)** | `Ctrl + Shift + →` | `Cmd + Shift + →` |
-| **탭 바로가기** | `Alt + 1, 2, 3` | `Alt + 1, 2, 3` |
 
 ## 🛠 기술 스택
 - **Frontend**: HTML5, CSS3 (Modern UI), JavaScript (ES6+)

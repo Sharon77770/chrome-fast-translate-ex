@@ -29,8 +29,13 @@ chrome.commands.onCommand.addListener((command) => {
   }
 });
 
-chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-  if (message.type === 'TRANSLATE_THIS') {
-    chrome.runtime.sendMessage(message);
+chrome.runtime.onMessage.addListener((message) => {
+  if (message.type === 'TRANSLATE_SELECTION' && message.text) {
+    chrome.runtime.sendMessage({
+      type: 'TRANSLATE_THIS',
+      text: message.text
+    }, () => {
+      void chrome.runtime.lastError;
+    });
   }
 });

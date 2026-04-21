@@ -4,9 +4,11 @@ document.addEventListener('mouseup', () => {
   
   if (selectedText.length > 0) {
     // 크롬 익스텐션 시스템을 통해 사이드 패널로 메시지 전송
-    if (chrome && chrome.runtime) {
-      chrome.runtime.sendMessage({ type: 'TRANSLATE_THIS', text: selectedText })
-        .catch(() => console.log("사이드 패널이 닫혀있습니다."));
+    if (typeof chrome !== 'undefined' && chrome.runtime) {
+      chrome.runtime.sendMessage({ type: 'TRANSLATE_SELECTION', text: selectedText }, () => {
+        // 사이드 패널이 닫혀있을 때 발생하는 에러 무시
+        void chrome.runtime.lastError;
+      });
     }
   }
 });
